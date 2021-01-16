@@ -1,19 +1,13 @@
 package fr.training.spring.library.exposition;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-@Validated
 public class DirecteurDTO {
 
     @JsonProperty("Prenom")
-    @Size(min=3,max = 20)
     private String prenom;
     @JsonProperty("Nom")
-    @NotNull
     private String nom;
 
     public DirecteurDTO(String prenom, String nom) {

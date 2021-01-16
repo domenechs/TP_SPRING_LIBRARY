@@ -6,6 +6,8 @@ public class ErrorCode {
     }
 
     public static final String LIBRARY_NOT_FOUND = "ERR_0001";
-    public static final String VALIDATION_ERROR = "ERR_0002";
+    public static final String DIRECTEUR_VALIDATION_ERROR = "ERR_0002";
+    public static final String ADRESSE_VALIDATION_ERROR = "ERR_0003";
+
 
 }

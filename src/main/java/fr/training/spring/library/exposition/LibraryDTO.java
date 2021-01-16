@@ -1,16 +1,14 @@
 package fr.training.spring.library.exposition;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import fr.training.spring.library.domain.Type;
 import fr.training.spring.library.domain.common.exception.ErrorCode;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Validated
+
 public class LibraryDTO {
 // Library
     @JsonProperty("Identifiant library")
@@ -19,10 +17,11 @@ public class LibraryDTO {
     private Type type;
 //Adresse
     @JsonProperty("adresse library")
+    @NotNull(message = "L'adresse est obligatoire!! Code erreur = "+ErrorCode.ADRESSE_VALIDATION_ERROR)
     private AdresseDTO adresseDTO;
 //Directeur
     @JsonProperty("Directeur")
-    @NotNull(message = ErrorCode.VALIDATION_ERROR)
+    @NotNull(message = "Le directeur est obligatoire!! Code erreur = "+ErrorCode.DIRECTEUR_VALIDATION_ERROR)
     private DirecteurDTO directeurDTO;
     @JsonProperty("Livre")
     private List<LivreDTO> livresDTO;

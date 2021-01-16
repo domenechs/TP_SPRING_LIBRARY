@@ -2,6 +2,7 @@ package fr.training.spring.library.domain;
 
 
 import java.util.List;
+import java.util.Objects;
 
 public class Library {
 
@@ -62,5 +63,18 @@ public class Library {
 
     public void setLivres(List<Livre> livres) {
         this.livres = livres;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Library library = (Library) o;
+        return Objects.equals(id, library.id) && type == library.type && Objects.equals(adresse, library.adresse) && directeur.equals(library.directeur) && Objects.equals(livres, library.livres);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type, adresse, directeur, livres);
     }
 }
