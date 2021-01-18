@@ -69,6 +69,10 @@ public class Library {
         this.livres = livres;
     }
 
+    public void addLivre(Livre livre){
+        livres.add(livre);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

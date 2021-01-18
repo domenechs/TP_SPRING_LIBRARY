@@ -1,6 +1,7 @@
 package fr.training.spring.library.exposition;
 
 import fr.training.spring.library.application.LibraryService;
+import fr.training.spring.library.domain.Livre;
 import fr.training.spring.library.domain.Type;
 import fr.training.spring.library.domain.Library;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,13 @@ public class LibraryResource {
     @ResponseStatus(HttpStatus.OK)
     public void deleteLibrary(@PathVariable String id){
         libraryService.deleteLibrary(id);
+    }
+
+    @PutMapping("/addbook/{libraryId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void addBookToLibrary(@RequestBody AddLivreDTO addLivreDTO,@PathVariable String libraryId){
+        libraryService.addBookToLibrary(addLivreDTO,libraryId);
+
     }
 
 }

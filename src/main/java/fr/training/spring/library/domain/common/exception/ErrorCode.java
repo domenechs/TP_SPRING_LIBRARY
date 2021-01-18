@@ -13,6 +13,7 @@ public class ErrorCode {
     public static final String TITRE_VALIDATION_ERROR = "ERR_0006";
     public static final String AUTEUR_VALIDATION_ERROR = "ERR_0007";
     public static final String NOMBRE_DE_PAGE_VALIDATION_ERROR = "ERR_0008";
+    public static final String AUTHOR_NOT_FOUND = "ERR_0001";
 
 
 }

@@ -68,6 +68,10 @@ public class Livre {
         return genre;
     }
 
+    public void setGenre(GenreLitteraire genre) {
+        this.genre = genre;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

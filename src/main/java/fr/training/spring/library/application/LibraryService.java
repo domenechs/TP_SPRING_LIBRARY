@@ -1,12 +1,16 @@
 package fr.training.spring.library.application;
 
-import fr.training.spring.library.domain.LibraryRepository;
-import fr.training.spring.library.domain.Type;
-import fr.training.spring.library.domain.Library;
+import fr.training.spring.library.domain.*;
 import fr.training.spring.library.domain.ddd.DDD;
+import fr.training.spring.library.exposition.AddLivreDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 
@@ -16,6 +20,8 @@ public class LibraryService {
 
     @Autowired
     LibraryRepository libraryRepository;
+    @Autowired
+    LivreRepository livreRepository;
 
     @Transactional
     public String createLibrary(Library library){
@@ -47,5 +53,14 @@ public class LibraryService {
     @Transactional
     public void deleteLibrary(String id){
         libraryRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void addBookToLibrary(AddLivreDTO addLivreDTO, String libraryId){
+        Livre livre = livreRepository.search(addLivreDTO.getIsbn());
+        livre.setGenre(addLivreDTO.getGenre());
+        Library updateLibrary = libraryRepository.findById(libraryId);
+        updateLibrary.addLivre(livre);
+        libraryRepository.save(updateLibrary);
     }
 }
