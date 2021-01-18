@@ -5,6 +5,7 @@ import fr.training.spring.library.domain.Type;
 import fr.training.spring.library.domain.common.exception.ErrorCode;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -18,10 +19,12 @@ public class LibraryDTO {
 //Adresse
     @JsonProperty("adresse library")
     @NotNull(message = "L'adresse est obligatoire!! Code erreur = "+ErrorCode.ADRESSE_VALIDATION_ERROR)
+    @Valid
     private AdresseDTO adresseDTO;
 //Directeur
     @JsonProperty("Directeur")
     @NotNull(message = "Le directeur est obligatoire!! Code erreur = "+ErrorCode.DIRECTEUR_VALIDATION_ERROR)
+    @Valid
     private DirecteurDTO directeurDTO;
     @JsonProperty("Livre")
     private List<LivreDTO> livresDTO;

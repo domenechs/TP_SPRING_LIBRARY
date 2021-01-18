@@ -3,6 +3,8 @@ package fr.training.spring.library.exposition;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.training.spring.library.domain.GenreLitteraire;
 
+import javax.validation.constraints.NotNull;
+
 public class LivreDTO {
     @JsonProperty("Identifiant livre")
     private long id;

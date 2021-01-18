@@ -1,7 +1,9 @@
 package fr.training.spring.library.infrastructure;
 
-import fr.training.spring.library.domain.Type;
+import fr.training.spring.library.domain.*;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity

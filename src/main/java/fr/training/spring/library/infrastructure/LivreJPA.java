@@ -1,6 +1,7 @@
 package fr.training.spring.library.infrastructure;
 
 import fr.training.spring.library.domain.GenreLitteraire;
+import fr.training.spring.library.domain.Livre;
 
 import javax.persistence.*;
 

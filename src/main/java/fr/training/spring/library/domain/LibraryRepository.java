@@ -1,7 +1,10 @@
 package fr.training.spring.library.domain;
 
+import fr.training.spring.library.domain.ddd.DDD;
+
 import java.util.List;
 
+@DDD.Repository
 public interface LibraryRepository {
 
     String save(Library library);

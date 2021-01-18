@@ -1,6 +1,13 @@
 package fr.training.spring.library.domain;
 
+import fr.training.spring.library.domain.common.exception.ErrorCode;
+import fr.training.spring.library.domain.common.exception.ValidationException;
+import fr.training.spring.library.domain.ddd.DDD;
+import org.springframework.util.StringUtils;
 
+import java.util.Objects;
+
+@DDD.Entity
 public class Livre {
 
     private long id;
@@ -18,8 +25,21 @@ public class Livre {
         this.auteur = auteur;
         this.nombreDePage = nombreDePage;
         this.genre = genre;
+        validate();
     }
 
+    public void validate(){
+        if(this == null){
+            throw new ValidationException("Le Livre est obligatoire",ErrorCode.LIBRARY_MUST_HAVE_BOOK);
+        }
+        if(StringUtils.isEmpty(isbn)){
+            throw new ValidationException("Numero ISBN est obligatoire",ErrorCode.ISBN_VALIDATION_ERROR);
+        }
+//        StringUtils.isEmpty(titre) || StringUtils.isEmpty(auteur) ||
+//            nombreDePage > 0){
+//            throw new ValidationException("")
+//        }
+    }
     public long getId() {
         return id;
     }
@@ -32,39 +52,32 @@ public class Livre {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
     public String getTitre() {
         return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
     }
 
     public String getAuteur() {
         return auteur;
     }
 
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
-    }
-
     public int getNombreDePage() {
         return nombreDePage;
-    }
-
-    public void setNombreDePage(int nombreDePage) {
-        this.nombreDePage = nombreDePage;
     }
 
     public GenreLitteraire getGenre() {
         return genre;
     }
 
-    public void setGenre(GenreLitteraire genre) {
-        this.genre = genre;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livre livre = (Livre) o;
+        return Objects.equals(isbn, livre.isbn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isbn);
     }
 }

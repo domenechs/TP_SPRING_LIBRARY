@@ -1,9 +1,13 @@
 package fr.training.spring.library.domain;
 
 
+import fr.training.spring.library.domain.ddd.DDD;
+
 import java.util.List;
 import java.util.Objects;
 
+@DDD.Entity
+@DDD.AggregateRoot
 public class Library {
 
     private String id;
@@ -70,11 +74,11 @@ public class Library {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Library library = (Library) o;
-        return Objects.equals(id, library.id) && type == library.type && Objects.equals(adresse, library.adresse) && directeur.equals(library.directeur) && Objects.equals(livres, library.livres);
+        return Objects.equals(id, library.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, type, adresse, directeur, livres);
+        return Objects.hash(id);
     }
 }

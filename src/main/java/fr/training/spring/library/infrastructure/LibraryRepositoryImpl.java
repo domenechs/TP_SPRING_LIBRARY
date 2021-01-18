@@ -5,11 +5,13 @@ import fr.training.spring.library.domain.LibraryRepository;
 import fr.training.spring.library.domain.Type;
 import fr.training.spring.library.domain.common.exception.ErrorCode;
 import fr.training.spring.library.domain.common.exception.NotFoundLibraryException;
+import fr.training.spring.library.domain.ddd.DDD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@DDD.RepositoryImpl
 @Repository
 public class LibraryRepositoryImpl implements LibraryRepository {
 
@@ -38,11 +40,13 @@ public class LibraryRepositoryImpl implements LibraryRepository {
     @Override
     public List<Library> findByType(Type type) {
         return libraryJPAAdapter.mapToLibrary(libraryDao.findByType(type));
+
     }
 
     @Override
     public List<Library> findByDirecteur_Prenom(String prenom) {
         return libraryJPAAdapter.mapToLibrary(libraryDao.findByDirecteurPrenom(prenom));
+
     }
 
     @Override

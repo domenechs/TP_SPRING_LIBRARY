@@ -3,12 +3,14 @@ package fr.training.spring.library.application;
 import fr.training.spring.library.domain.LibraryRepository;
 import fr.training.spring.library.domain.Type;
 import fr.training.spring.library.domain.Library;
+import fr.training.spring.library.domain.ddd.DDD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@DDD.ApplicationService
 @Service
 public class LibraryService {
 
