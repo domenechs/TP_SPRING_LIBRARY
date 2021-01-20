@@ -1,7 +1,6 @@
 package fr.training.spring.library.exposition;
 
-import fr.training.spring.library.application.LibraryService;
-import fr.training.spring.library.domain.Livre;
+import fr.training.spring.library.application.LibraryServiceImpl;
 import fr.training.spring.library.domain.Type;
 import fr.training.spring.library.domain.Library;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.List;
 public class LibraryResource {
 
     @Autowired
-    LibraryService libraryService;
+    LibraryServiceImpl libraryService;
     @Autowired
     LibraryAdapter libraryAdapter;
 
@@ -24,12 +23,12 @@ public class LibraryResource {
     @ResponseStatus(HttpStatus.CREATED)
     public String createLibrary(@Valid @RequestBody LibraryDTO libraryDTO){
         Library library = libraryAdapter.mapToLibrary(libraryDTO);
-        String idLibrary = libraryService.createLibrary(library);
+        return libraryService.createLibrary(library);
 //        System.out.println("ID LIBRARY: " + newLibrary.getId());
 //        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 //                                                    .buildAndExpand(library.getId()).toUri();
 //        return ResponseEntity.created(location).build();
-        return idLibrary;
+
     }
 
 
